@@ -1,3 +1,4 @@
+import json
 def json_file_to_dict(file_path: str) -> dict:
     '''convert json to dict
     
@@ -7,7 +8,9 @@ def json_file_to_dict(file_path: str) -> dict:
     Returns:
         dict: dict data
     '''
-    return
+    data=open(file_path).read()
+    data_json=json.loads(data)
+    return data_json
 
 
 def get_number_of_users(data: dict) -> int:
@@ -19,7 +22,13 @@ def get_number_of_users(data: dict) -> int:
     Returns:
         int: number of all users.
     '''
-    return
+
+    return len(data['users'])
+d=json_file_to_dict('data.json')
+print(get_number_of_users(d))
+
+
+    
 
 
 def get_all_countries(data: str) -> list:
@@ -31,7 +40,17 @@ def get_all_countries(data: str) -> list:
     Returns:
         list: list of counrties
     '''
-    return
+    r=[]
+    
+    for i in range(len(data['users'])):
+        r.append((data['users'][i]['country']))
+        
+        
+   
+    return r
+print(get_all_countries(d))
+#print(d['users'])
+
 
 
 def get_all_users_fullname(data: str) -> list:
@@ -43,7 +62,15 @@ def get_all_users_fullname(data: str) -> list:
     Returns:
         list: list of all users' full name
     '''
-    return
+    r=[]
+    
+    for i in range(len(data['users'])):
+        r.append((data['users'][i]['first_name'])+' '+(data['users'][i]['last_name']))
+        
+        
+   
+    return r
+print(get_all_users_fullname(d))
 
 
 def get_user_by_id(id: int) -> dict:
