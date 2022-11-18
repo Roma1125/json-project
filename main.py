@@ -25,7 +25,7 @@ def get_number_of_users(data: dict) -> int:
 
     return len(data['users'])
 d=json_file_to_dict('data.json')
-print(get_number_of_users(d))
+#print(get_number_of_users(d))
 
 
     
@@ -73,7 +73,7 @@ def get_all_users_fullname(data: str) -> list:
 print(get_all_users_fullname(d))
 
 
-def get_user_by_id(id: int) -> dict:
+def get_user_by_id(a,id: int) -> dict:
     '''get user by id
     
     Args:
@@ -81,11 +81,17 @@ def get_user_by_id(id: int) -> dict:
         
     Returns:
         dict: user data
-    '''
-    return
+    ''' 
+    for i in a['users']:
+        if i['id'] == str(id):
+            return i
+        
+        
+    
+print(get_user_by_id(d,8))
 
 
-def get_user_by_firstname(first_name: str) -> dict:
+def get_user_by_firstname(a,first_name: str) -> dict:
     '''get user by first name
     
     Args:
@@ -94,10 +100,13 @@ def get_user_by_firstname(first_name: str) -> dict:
     Returns:
         dict: user data
     '''
-    return
+    for i in a['users']:
+        if i['first_name'] == first_name:
+            return i
+    
 
 
-def get_user_by_lastname(last_name: str) -> dict:
+def get_user_by_lastname(a,last_name: str) -> dict:
     '''get user by last name
     
     Args:
@@ -106,10 +115,14 @@ def get_user_by_lastname(last_name: str) -> dict:
     Returns:
         dict: user data
     '''
-    return
+    for i in a['users']:
+        if i['last_name'] == last_name:
+            return i
+    
+   
 
+def get_user_by_country(a,country: str) -> dict:
 
-def get_user_by_country(country: str) -> dict:
     '''get user by country
     
     Args:
@@ -118,5 +131,9 @@ def get_user_by_country(country: str) -> dict:
     Returns:
         dict: user data
     '''
-    return
+    for i in a['users']:
+        if i['country'] == country:
+            return i
+
+    
 
